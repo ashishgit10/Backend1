@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import express from "express" */
 import dotenv from "dotenv";
 import connectDb from "./db/Connections.js";
+
 dotenv.config({
   path: "./env",
 });
@@ -24,3 +25,4 @@ connectDb();
   }
 })();
  */
+ 
