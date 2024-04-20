@@ -10,7 +10,6 @@ dotenv.config({
 
 connectDb()
   .then(() => {
-
     app.listen(process.env.PORT || 8000, () => {
       console.log(`Server is running at PORT:${process.env.PORT}`)
     })
@@ -18,6 +17,10 @@ connectDb()
   .catch((err) => {
     console.log("failed to connect to Database", err)
   })
+
+
+
+  
 /* (async () => {
   try {
    await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`);

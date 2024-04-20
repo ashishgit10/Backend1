@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         requred: true,
     },
-    avatar: {
+    coverImg: {
         type: String,
     },
     watchHistory: [
@@ -47,9 +47,11 @@ const userSchema = new mongoose.Schema({
 },
     { timpestamps: true }
 )
-userSchema.pre("save", async function () {
-    if (!this.modifiedPaths("password")) return next()
-    this.password = bcrypt.hash(this.pasword, 10)
+
+
+userSchema.pre("save", async function (next) {
+    if (!this.modified("password")) return next()
+    this.password = await bcrypt.hash(this.pasword, 10)
     next()
 })
 userSchema.methods.isPasswordCorrect = async function (password) {
