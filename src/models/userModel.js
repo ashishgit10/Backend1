@@ -1,10 +1,13 @@
 import mongoose from "mongoose"
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
-const userSchema = new mongoose.Schema({
+
+const { Schema } = mongoose; 
+
+const userSchema = new Schema({
     username: {
         type: String,
-        requred: true,
+        required: true,
         unique: true,
         lowercase: true,
         trim: true,
@@ -12,21 +15,21 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        requred: true,
+        required: true,
         unique: true,
         lowercase: true,
         trim: true,
     },
     fullname: {
         type: String,
-        requred: true,
+        required: true,
         lowercase: true,
         trim: true,
         index: true
     },
     avatar: {
         type: String,
-        requred: true,
+        required: true,
     },
     coverImg: {
         type: String,
@@ -84,5 +87,4 @@ userSchema.methods.generateRefreshToken = async function () {
     )
 
 }
-userSchema.methods.generateRefreshToken = async function () { }
 export const User = mongoose.model('User', userSchema)
